@@ -1,0 +1,106 @@
+commit 7781fd4e713c4b59422129b8d5f9a398814f4b73
+Author: Heljä Lehtinen <lehthelj@gmail.com>
+Date:   Tue Mar 14 21:23:16 2023 +0200
+
+    muutoksia lisätty
+
+ tiedostoja/file1.txt | 0
+ tiedostoja/file2.txt | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 4fcc5b0d3df654c33235b21e12a733416471b4d4
+Author: Heljä Lehtinen <lehthelj@gmail.com>
+Date:   Tue Mar 14 21:16:14 2023 +0200
+
+    tiedostoja lisätty
+
+ tiedostoja/file1.txt | 0
+ tiedostoja/file2.txt | 0
+ tiedostoja/file3.txt | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 5aea3e91771a54b0ce0fb21caf80943c2a39653c
+Author: Heljä Lehtinen <lehthelj@gmail.com>
+Date:   Tue Mar 14 20:50:11 2023 +0200
+
+    muutoksiaa
+
+ eka.txt    | 4 +++-
+ kolmas.txt | 4 +++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+commit 5b350d846d9afc4dda0a8e4a4d7fe8db5123623e
+Author: Heljä Lehtinen <lehthelj@gmail.com>
+Date:   Tue Mar 14 20:45:24 2023 +0200
+
+    poisto ja muutoksia
+
+ tiedosto.txt => eka.txt | 0
+ toinen.txt              | 1 -
+ 2 files changed, 1 deletion(-)
+
+commit 8c653a1fb9896fb1a2b359cb30c46d7c27d79882
+Author: Heljä Lehtinen <lehthelj@gmail.com>
+Date:   Tue Mar 14 20:38:00 2023 +0200
+
+    tiedostoa muokattu taas
+
+ tiedosto.txt | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit 273008cfeaffc5e5d32332d7f188ee1184cb842e
+Author: Heljä Lehtinen <lehthelj@gmail.com>
+Date:   Tue Mar 14 20:35:49 2023 +0200
+
+    tiedostoa muokattu
+
+ tiedosto.txt | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+commit fcad5fc89e0fd310df323592aba22a1fc9585e02
+Author: Heljä Lehtinen <lehthelj@gmail.com>
+Date:   Tue Mar 14 13:50:23 2023 +0200
+
+    uusi hakemisto ja tiedosto
+
+ stuff/jotain.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 268011de3fbb46d00bfa335464fc63f57c2d1681
+Author: Heljä Lehtinen <lehthelj@gmail.com>
+Date:   Tue Mar 14 13:46:52 2023 +0200
+
+    muutoksia toiseen ja kolmanteen
+
+ kolmas.txt | 3 +++
+ toinen.txt | 1 +
+ 2 files changed, 4 insertions(+)
+
+commit aed03e55334bc53045efdf660ff71553c78afcc0
+Author: Heljä Lehtinen <lehthelj@gmail.com>
+Date:   Tue Mar 14 13:44:00 2023 +0200
+
+    toinen lisäys
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 8e35038bb04976ac322e6c9f8bd2dbe49fec0d8e
+Author: Heljä Lehtinen <lehthelj@gmail.com>
+Date:   Tue Mar 14 13:36:15 2023 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 55e3b728ad4c7f73e2fbbe568527860a2a3b96c5
+Author: Heljä Lehtinen <lehthelj@gmail.com>
+Date:   Tue Mar 14 13:29:21 2023 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
