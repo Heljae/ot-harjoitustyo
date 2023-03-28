@@ -1,9 +1,14 @@
 # Vaatimusmäärittely
 ## Sovelluksen tarkoitus
-Sovelluksen tarkoituksena käyttäjän on mahdollista pelata erästä shakki-pelin varianttia nimeltä Piilodaami. Peliä pelataan normaalilla shakkilaudalla, mutta toisin kun normaalissa shakissa, molemmat pelaajat valitsevat yhden sotilaan, joka saakin liikkua samalla tavalla kuin kuningatar.
+Projektissa käyttäjän on mahdollista pelata erästä shakki-pelin varianttia nimeltä Piilodaami. Peliä pelataan normaalilla shakkilaudalla, mutta toisin kun normaalissa shakissa, molemmat pelaajat valitsevat yhden sotilaan, joka saakin liikkua samalla tavalla kuin kuningatar.
 ## Suunnitellut toiminnallisuudet
-Sovelluksessa tulee olemaan seuraavat toiminnallisuudet:  
-- Voit tallentaa pelejä tietokantaan
+Sovelluksessa tulee olemaan seuraavat toiminnallisuudet:
+- Aluksi lauta printataan tekstikäyttöliittymänä  
+- Tekstikäyttöliittymässä kirjoitat tehtävän siirron ja siirto tapahtuu  
+- Uuden pelin aloitus  
+- Voit tallentaa pelejä tietokantaan  
 - Voit siirrellä nappuloita graafisen käyttöliittymän avulla
 ## Jatkokehitysideat
-
+- premove  
+- erikoissiirrot (ohestalyönti, linnoitus)  
+- Siirtojen laillisuuden tarkistus  
