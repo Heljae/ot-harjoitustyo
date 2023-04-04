@@ -126,12 +126,3 @@ class LegalMoves:
         return possible_moves
 
     
-if __name__=="__main__":
-    jee = LegalMoves()
-    print(jee.rooks_legal_moves("Rh8"))
-    print(jee.knights_legal_moves("Nh8"))
-    print(jee.white_pawns_legal_moves("f2"))
-    print(jee.white_pawns_legal_moves("a3"))
-    print(jee.black_pawns_legal_moves("e4"))
-    print(jee.black_pawns_legal_moves("h7"))
-    print(jee.kings_legal_moves("Ke8"))
