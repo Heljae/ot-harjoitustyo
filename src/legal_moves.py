@@ -3,12 +3,15 @@ class LegalMoves:
     """
 
     def __init__(self):
-        self.files = "abcdefgh"  # ["a", "b", "c", "d", "e", "f", "g", "h"]
-        self.ranks = "12345678" # [1, 2, 3, 4, 5, 6, 7, 8]
+        self.files = "abcdefgh"
+        self.ranks = "12345678"
 
     def knights_legal_moves(self, square):
         """Returns all of knight's legal moves in the given square.
         """ 
+
+        if square[1] not in self.files or square[2] not in self.ranks or len(square) != 3:  # chechs if the square is legal
+            return "Illegal square!"
 
         rank = int(square[2])
         file = square[1]
@@ -19,6 +22,7 @@ class LegalMoves:
         The key is how many files the knight moves.
         The value is a list of how many ranks the knight can move.
         """
+
         possible_moves = {-2:[1, -1], -1:[2, -2], 1:[2, -2], 2:[1, -1]}
         moves = []
         for next_file in possible_moves:
@@ -37,6 +41,9 @@ class LegalMoves:
     def rooks_legal_moves(self, square):
         """Returns all of rook's legal moves.
         """
+
+        if square[1] not in self.files or square[2] not in self.ranks or len(square) != 3:
+            return "Illegal square!"
         
         rank = int(square[2])
         file = square[1]
@@ -51,26 +58,80 @@ class LegalMoves:
         moves.remove(square)
         return moves
 
-    def bishops_legal_moves():
+    def bishops_legal_moves(self, square):
         """Returns all of bishop's legal moves.
         """
+
+
+
         pass
 
-    def queens_legal_moves():
+    def queens_legal_moves(self, square):
         """Returns all of queen's legal moves.
+        The queen can move like both rook and bishop, so the possible moves is the sum of the two.
         """
-        pass
 
-    def kings_legal_moves():
+        if square[1] not in self.files or square[2] not in self.ranks or len(square) != 3:
+            return "Illegal square!"
+
+        return self.bishops_legal_moves(square) +self.rooks_legal_moves(square)
+
+    def kings_legal_moves(self, square):
         """Returns all of king's legal moves.
         """
-        pass
 
-    def pawns_legal_moves():
-        """Returns all of pawn's legal moves.
+        file_index = "abcdefgh".find(square[1])
+        rank_index = "12345678".find(square[2])
+
+        if square[1] not in self.files or square[2] not in self.ranks or len(square) != 3:
+            return "Illegal square!"
+
+        possible_squares = {-1:[-1, 0, 1],0:[-1, 1],1:[-1,0,1]}
+        legal_moves = []
+
+        for move in possible_squares:
+            if file_index-move < 0 or file_index+move > 7:
+                continue
+            for item in possible_squares[move]:
+                if int(square[2])+item < 0 or int(square[2])+item > 7:
+                    continue
+                legal_moves.append(square[0]+(self.files[file_index+move])+(self.ranks[rank_index+item]))
+        return legal_moves
+
+    def white_pawns_legal_moves(self, square):
+        """Returns all of white pawn's legal moves.
+        Dictionary's key is file and value rank.
+        Pawns can move either one or two squares in the beginning.
+        Doesn't include captures or promotions.
         """
-        pass
+
+        if square[0] not in self.files or square[1] not in self.ranks or len(square) != 2:
+            return "Illegal square!"
+
+        possible_moves = [square[0]+str(int(square[1])+1)]
+        if square[1] == "2":
+            possible_moves.append(square[0]+str(int(square[1])+2))
+        return possible_moves
+    
+    def black_pawns_legal_moves(self, square):
+        """Returns all of black pawn's legal moves.
+        """
+
+        if square[0] not in self.files or square[1] not in self.ranks or len(square) != 2:
+            return "Illegal square!"
+
+        possible_moves = [square[0]+str(int(square[1])-1)]
+        if square[1] == "7":
+            possible_moves.append(square[0]+str(int(square[1])-2))
+        return possible_moves
+
     
 if __name__=="__main__":
     jee = LegalMoves()
     print(jee.rooks_legal_moves("Rh8"))
+    print(jee.knights_legal_moves("Nh8"))
+    print(jee.white_pawns_legal_moves("f2"))
+    print(jee.white_pawns_legal_moves("a3"))
+    print(jee.black_pawns_legal_moves("e4"))
+    print(jee.black_pawns_legal_moves("h7"))
+    print(jee.kings_legal_moves("Ke8"))
