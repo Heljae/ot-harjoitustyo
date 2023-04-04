@@ -8,7 +8,7 @@ sequenceDiagram
     main->>bussi244: Lukijalaite()
     laitehallinto->>rautatietori: lisaa_lataaja()
     laitehallinto->>ratikka6: lisaa_lataaja()
-    laitehalinto->> buddi244: lisaa_lataaja()
+    laitehallinto->> bussi244: lisaa_lataaja()
     main->>lippu_luukku: Kioski()
     lippu_luukku->>kallen_kortti: osta_matkakortti("Kalle")
     rautatietori->>kallen_kortti: lataa_arvoa(3)
