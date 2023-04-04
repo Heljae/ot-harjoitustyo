@@ -1,21 +1,6 @@
-esimerkki:
-
-```mermaid
-classDiagram
-    Todo "*" --> "1" User
-    class User{
-        username
-        password
-    }
-    class Todo{
-        id
-        content
-        done
-    }
-```
 # Monopoli luokkakaavio
 
-```Mermaid
+```mermaid
 classDiagram
     Monopoli "1" -- "1" Pelilauta
     Pelilauta "1" <.. "2" Nopat
