@@ -62,9 +62,38 @@ class LegalMoves:
         """Returns all of bishop's legal moves.
         """
 
+        if square[1] not in self.files or square[2] not in self.ranks or len(square) != 3:
+            return "Illegal square!"
+        
+        file_index = "abcdefgh".find(square[1])
+        rank_index = "12345678".find(square[2])
 
+        possible_moves = []
 
-        pass
+        """The following loops check all possible moves half a diagonal at time.
+        """
+
+        for i in range(1, 9):
+            if file_index-i>=0 and rank_index+i<8:
+                possible_moves.append(square[0]+self.files[file_index-i]+self.ranks[rank_index+i])
+            else:
+                break
+        for i in range(1, 9):
+            if file_index-i>=0 and rank_index-i>=0:
+                possible_moves.append(square[0]+self.files[file_index-i]+self.ranks[rank_index-i])
+            else:
+                break
+        for i in range(1, 9):
+            if file_index+i<8 and rank_index+i<8:
+                possible_moves.append(square[0]+self.files[file_index+i]+self.ranks[rank_index+i])
+            else:
+                break
+        for i in range(1, 9):
+            if file_index+i<8 and rank_index-i>=0:
+                possible_moves.append(square[0]+self.files[file_index+i]+self.ranks[rank_index-i])
+            else:
+                break
+        return possible_moves
 
     def queens_legal_moves(self, square):
         """Returns all of queen's legal moves.
@@ -90,10 +119,10 @@ class LegalMoves:
         legal_moves = []
 
         for move in possible_squares:
-            if file_index-move < 0 or file_index+move > 7:
+            if file_index+move < 0 or file_index+move > 7:
                 continue
             for item in possible_squares[move]:
-                if int(square[2])+item < 0 or int(square[2])+item > 7:
+                if rank_index+item < 0 or rank_index+item > 7:
                     continue
                 legal_moves.append(square[0]+(self.files[file_index+move])+(self.ranks[rank_index+item]))
         return legal_moves
@@ -124,5 +153,3 @@ class LegalMoves:
         if square[1] == "7":
             possible_moves.append(square[0]+str(int(square[1])-2))
         return possible_moves
-
-    
