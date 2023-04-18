@@ -8,47 +8,46 @@ class LegalMoves:
 
     def knights_legal_moves(self, square):
         """Returns all of knight's legal moves in the given square.
-        """ 
+        """
 
-        if square[1] not in self.files or square[2] not in self.ranks or len(square) != 3:  # chechs if the square is legal
+        if square[1] not in self.files or square[2] not in self.ranks or len(square) != 3:
             return "Illegal square!"
 
-        rank = int(square[2])
-        file = square[1]
         file_index = "abcdefgh".find(square[1])
         rank_index = "12345678".find(square[2])
 
-        """The following dictionary represents all of knight's possibe moves.
+        """
+        The following dictionary represents all of knight's possibe moves.
         The key is how many files the knight moves.
         The value is a list of how many ranks the knight can move.
         """
 
-        possible_moves = {-2:[1, -1], -1:[2, -2], 1:[2, -2], 2:[1, -1]}
+        possible_moves = {-2: [1, -1], -1: [2, -2], 1: [2, -2], 2: [1, -1]}
         moves = []
         for next_file in possible_moves:
             for item in possible_moves[next_file]:
-                """We need to calculate if the knight goes over the board.
-                """
+                # We need to calculate if the knight goes over the board.
+
                 if rank_index+1+item > 8 or rank_index+1+item < 0:
                     continue
                 if file_index+1+int(next_file) > 8 or file_index+1+int(next_file) < 1:
                     continue
                 if rank_index + int(item) < 0:
                     continue
-                moves.append(f"{square[0]}{self.files[file_index+int(next_file)]}{self.ranks[rank_index+int(item)]}")
+                possible_file = self.files[file_index+int(next_file)]
+                possible_rank = self.ranks[rank_index+int(item)]
+                moves.append(f"{square[0]}{possible_file}{possible_rank}")
         return moves
-    
+
     def rooks_legal_moves(self, square):
         """Returns all of rook's legal moves.
         """
 
         if square[1] not in self.files or square[2] not in self.ranks or len(square) != 3:
             return "Illegal square!"
-        
+
         rank = int(square[2])
         file = square[1]
-        file_index = "abcdefgh".find(square[1])
-        rank_index = "12345678".find(square[2])
         moves = []
         for letter in self.files:
             moves.append(square[0] + letter + str(rank))
@@ -64,35 +63,26 @@ class LegalMoves:
 
         if square[1] not in self.files or square[2] not in self.ranks or len(square) != 3:
             return "Illegal square!"
-        
+
         file_index = "abcdefgh".find(square[1])
         rank_index = "12345678".find(square[2])
 
         possible_moves = []
 
-        """The following loops check all possible moves half a diagonal at time.
-        """
-
+        # The following loops check all possible moves half a diagonal at time.
         for i in range(1, 9):
-            if file_index-i>=0 and rank_index+i<8:
-                possible_moves.append(square[0]+self.files[file_index-i]+self.ranks[rank_index+i])
-            else:
-                break
-        for i in range(1, 9):
-            if file_index-i>=0 and rank_index-i>=0:
-                possible_moves.append(square[0]+self.files[file_index-i]+self.ranks[rank_index-i])
-            else:
-                break
-        for i in range(1, 9):
-            if file_index+i<8 and rank_index+i<8:
-                possible_moves.append(square[0]+self.files[file_index+i]+self.ranks[rank_index+i])
-            else:
-                break
-        for i in range(1, 9):
-            if file_index+i<8 and rank_index-i>=0:
-                possible_moves.append(square[0]+self.files[file_index+i]+self.ranks[rank_index-i])
-            else:
-                break
+            if file_index-i >= 0 and rank_index+i < 8:
+                possible_moves.append(
+                    square[0]+self.files[file_index-i]+self.ranks[rank_index+i])
+            if file_index-i >= 0 and rank_index-i >= 0:
+                possible_moves.append(
+                    square[0]+self.files[file_index-i]+self.ranks[rank_index-i])
+            if file_index+i < 8 and rank_index+i < 8:
+                possible_moves.append(
+                    square[0]+self.files[file_index+i]+self.ranks[rank_index+i])
+            if file_index+i < 8 and rank_index-i >= 0:
+                possible_moves.append(
+                    square[0]+self.files[file_index+i]+self.ranks[rank_index-i])
         return possible_moves
 
     def queens_legal_moves(self, square):
@@ -103,7 +93,7 @@ class LegalMoves:
         if square[1] not in self.files or square[2] not in self.ranks or len(square) != 3:
             return "Illegal square!"
 
-        return self.bishops_legal_moves(square) +self.rooks_legal_moves(square)
+        return self.bishops_legal_moves(square) + self.rooks_legal_moves(square)
 
     def kings_legal_moves(self, square):
         """Returns all of king's legal moves.
@@ -115,7 +105,7 @@ class LegalMoves:
         if square[1] not in self.files or square[2] not in self.ranks or len(square) != 3:
             return "Illegal square!"
 
-        possible_squares = {-1:[-1, 0, 1],0:[-1, 1],1:[-1,0,1]}
+        possible_squares = {-1: [-1, 0, 1], 0: [-1, 1], 1: [-1, 0, 1]}
         legal_moves = []
 
         for move in possible_squares:
@@ -124,7 +114,8 @@ class LegalMoves:
             for item in possible_squares[move]:
                 if rank_index+item < 0 or rank_index+item > 7:
                     continue
-                legal_moves.append(square[0]+(self.files[file_index+move])+(self.ranks[rank_index+item]))
+                legal_moves.append(
+                    square[0]+(self.files[file_index+move])+(self.ranks[rank_index+item]))
         return legal_moves
 
     def white_pawns_legal_moves(self, square):
@@ -141,7 +132,7 @@ class LegalMoves:
         if square[1] == "2":
             possible_moves.append(square[0]+str(int(square[1])+2))
         return possible_moves
-    
+
     def black_pawns_legal_moves(self, square):
         """Returns all of black pawn's legal moves.
         """
