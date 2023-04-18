@@ -2,7 +2,7 @@ from invoke import task
 
 @task
 def start(ctx):
-    ctx.run("python3 src/chess.py", pty=True)
+    ctx.run("python3 src/hidden_queen_main.py", pty=True)
 
 @task
 def test(ctx):
@@ -15,3 +15,11 @@ def coverage(ctx):
 @task(coverage)
 def coverage_report(ctx):
     ctx.run("coverage html", pty=True)
+
+@task
+def format(ctx): # pylint: disable=redefined-builtin
+    ctx.run("autopep8 --in-place --recursive src", pty=True)
+
+@task
+def lint(ctx):
+    ctx.run("pylint src", pty=True)
