@@ -1,6 +1,7 @@
 import unittest
 from legal_moves import LegalMoves
 
+
 class TestLegalMoves(unittest.TestCase):
     def setUp(self):
         self.legal = LegalMoves()
