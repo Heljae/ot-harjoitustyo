@@ -8,3 +8,6 @@
 - Luokassa Board on nyt metodi board_without_icons_and_dots, joka palauttaa laudan siten, että tyjät ruudut ovat ykkösiä. Lauta on edelleen printattavassa muodossa.  
 - Luokassa Board on metodi new_fen, joka palauttaa uuden FEN muotoisen shakkilaudan, jossa on tehty metodille annettava siirto.  
 - Luotiin luokka MakingMoves, jossa on jokaiselle shakkinappulalle oma piilotettu metodi, jota metodi make_move kutsuu nappulaa siirrettäessä. Metodi make_move palauttaa uuden aseman FEN muodossa. Tällä hetkellä vain tornilla on kapseloitu metodi.  
+- Luotiin hidden_queen_main.py tiedostoon alustava käyttöliittymän rakenne  
+- Luotiin tiedosto main_inputs.py, joka ei toistaiseksi tee mitään järkevää  
+ 

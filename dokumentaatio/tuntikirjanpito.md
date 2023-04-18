@@ -7,3 +7,6 @@
 | 5.4. | 1.5h | Lailliset siirrot loppuun |
 | 7.4. | 2h | Luokka MakingMoves ja luokkaan Board asioiden lisäystä |
 | 16.4. | 1h | Metodin new_fen ja luokan MakingMoves edistämistä |
+| 17.4. | 1.5h | MakingMoves luokan edistämistä |
+| 18.4. | 1.5h | Kaikkien luokkien edistämistä, erityisesti luokan MakingMoves ja Board |
+| yht | 13h |   |
