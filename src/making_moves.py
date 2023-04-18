@@ -51,13 +51,23 @@ class MakingMoves:
                     if self.turn:
                         if old in legal_squares and move[0] == "R":
                             self.turn = False
-                            new_fen = self.board.new_fen(old, move, board)
-                            return new_fen
+                            position = self.board.new_position_in_list(
+                                old, move, board)
+                            self.position = self.board.new_fen(
+                                old, move, board)
+                            self.board.fen = self.board.new_fen(
+                                old, move, board)
+                            return position
                     else:
                         if old in legal_squares and move[0] == "r":
                             self.turn = True
-                            new_fen = self.board.new_fen(old, move, board)
-                            return new_fen
+                            position = self.board.new_position_in_list(
+                                old, move, board)
+                            self.position = self.board.new_fen(
+                                old, move, board)
+                            self.board.fen = self.board.new_fen(
+                                old, move, board)
+                            return position
         raise ValueError("Laiton siirto!")
 
     def __moving_knight(self, move):
@@ -193,6 +203,6 @@ class MakingMoves:
         raise ValueError("Laiton siirto!")
 
 
-jee = MakingMoves(Board())
-print(jee.make_move("Nf3"))
+# jee = MakingMoves(Board())
+# print(jee.make_move("Rh3"))
 # jee.make_move("Ra8")

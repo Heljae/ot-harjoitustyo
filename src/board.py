@@ -8,6 +8,7 @@ class Board:
 
     def __init__(self):
         self.fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"
+        self.fakefen = "rnbqkbnr/pppppppp/11111111/11111111/PPPPPPPP/RNBQKBNR"
         self.pieces = {"R": "♖", "N": "♘", "B": "♗", "Q": "♕", "K": "♔",
                        "P": "♙", "r": "♜", "n": "♞", "b": "♝", "q": "♛", "k": "♚", "p": "♟"}
         self.whites_turn = True
@@ -49,14 +50,65 @@ class Board:
         board = board.replace(".", "1")
         return board
 
+    def new_position_in_list(self, old_square: str, new_square: str, position: list):
+        board_dict = self.board_list_to_dict(position)
+
+        new_fen = ""
+        old_rank_index = "87654321".find(old_square[-1])
+        old_file_index = "abcdefgh".find(old_square[-2])
+        new_rank_index = "87654321".find(new_square[-1])
+        new_file_index = "abcdefgh".find(new_square[-2])
+
+        if old_square[0] not in self.pieces:
+            return "Vääräää"
+        new_row = ""
+        old_row = board_dict[old_rank_index]
+        for i in range(8):
+            if old_file_index == i:
+                new_row += "1"
+                continue
+            new_row += old_row[i]
+        board_dict[old_rank_index] = new_row
+
+        new_row = ""
+        older_row = board_dict[new_rank_index]
+        for i in range(8):
+            if new_file_index == i:
+                new_row += old_square[0]
+                continue
+            new_row += older_row[i]
+        board_dict[new_rank_index] = new_row
+
+        return self.board_dict_to_list(board_dict)
+
+    def board_list_to_dict(self, board: list):
+        """Return the board in a dictionary
+        """
+
+        new_board = {}
+        rank_index = 0
+        for row in board:
+            new_board[rank_index] = row
+            rank_index += 1
+        return new_board
+
+    def board_dict_to_list(self, board: dict):
+        """Returns the board in a list.
+        """
+
+        list_board = []
+        for row in board:
+            list_board.append(row)
+        return list_board
+
     def new_fen(self, old_square: str, new_square: str, position: list):
-        """Class creates a new fen where the given piece is moved into the given square.
-        The arguments given to the method are the previous square of the piece, the new square, and the board.
+        """Method creates a new fen where the given piece is moved into the given square.
+        Method gets the previous square of the piece, the new square, and the board as its arguments.
         The board is a list where each row is in an index.
         """
-        # board = self.board_without_icons_and_dots()
-        # board = board.split("\n")
-        # print(board)
+
+        # This is still very broken
+
         new_fen = ""
         old_rank_index = "87654321".find(old_square[-1])
         old_file_index = "abcdefgh".find(old_square[-2])
@@ -99,6 +151,8 @@ class Board:
         return new_fen
 
 # jee = Board()
-# print(jee.print_board())
-# print(jee.board_without_icons_and_dots())
-# print(jee.new_fen("Ng1", "Nf3", jee))
+# # print(jee.print_board())
+# # print(jee.board_without_icons_and_dots())
+# aa = ['rnbqkbnr', 'pppppppp', '11111111', '11111111', '11111111', '11111111', 'PPPPPPPP', 'RNBQKBNR']
+# # print(jee.board_list_to_dict(aa))
+# print(jee.new_fen("Ng1", "Nf3", aa))

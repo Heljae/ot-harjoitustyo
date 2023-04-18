@@ -1,5 +1,39 @@
+from board import Board
+from making_moves import MakingMoves
+
+"""Works first like regular chess
+"""
+
 print("Tervetuloa pelaamaan shakin varianttia nimeltä Piilodaami!")
 print()
+print("Ohjelma vaatii englanninkielisen shakkinotaation tuntemisen.")
+print("1 - Printtaa ohjeet")
+print("2 - Tekee siirron")  # Works only when you move the rook once :')
+print("3 - Printtaa laudan")
+print("0 - Lopettaa ohjelman")
+print()
+
+position = Board()
+real_position = MakingMoves(position)
+
+while True:
+    instruction = int(input("Anna ohje: "))
+    if instruction == 0:
+        print("Kiitos pelaamisesta!")
+        break
+    elif instruction == 1:
+        print("1 - Printtaa ohjeet")
+        print("2 - Tekee siirron")
+        print("3 - Printtaa laudan")
+        print("0 - Lopettaa ohjelman")
+    elif instruction == 3:
+        print()
+        print(position.print_board())
+    elif instruction == 2:
+        move = input(
+            "Anna siirto (kokeile Rh3 ja printtaa sen jälkeen lauta):")
+        moving = real_position.make_move(move)
+        print()
 
 
 # from board import Board
