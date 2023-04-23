@@ -11,3 +11,6 @@
 - Luotiin hidden_queen_main.py tiedostoon alustava käyttöliittymän rakenne  
 - Luotiin tiedosto main_inputs.py, joka ei toistaiseksi tee mitään järkevää  
  
+## Viikko 5
+- Muokattiin luokkaa Board toimivaksi (new_fen toimii)  
+- 
