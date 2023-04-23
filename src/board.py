@@ -8,10 +8,8 @@ class Board:
 
     def __init__(self):
         self.fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"
-        self.fakefen = "rnbqkbnr/pppppppp/11111111/11111111/PPPPPPPP/RNBQKBNR"
         self.pieces = {"R": "♖", "N": "♘", "B": "♗", "Q": "♕", "K": "♔",
                        "P": "♙", "r": "♜", "n": "♞", "b": "♝", "q": "♛", "k": "♚", "p": "♟"}
-        self.whites_turn = True
 
     def print_board(self):
         board = ""
@@ -52,8 +50,6 @@ class Board:
 
     def new_position_in_list(self, old_square: str, new_square: str, position: list):
         board_dict = self.board_list_to_dict(position)
-
-        new_fen = ""
         old_rank_index = "87654321".find(old_square[-1])
         old_file_index = "abcdefgh".find(old_square[-2])
         new_rank_index = "87654321".find(new_square[-1])
@@ -97,8 +93,8 @@ class Board:
         """
 
         list_board = []
-        for row in board:
-            list_board.append(row)
+        for i in range(8):
+            list_board.append(board[i])
         return list_board
 
     def new_fen(self, old_square: str, new_square: str, position: list):
@@ -107,52 +103,40 @@ class Board:
         The board is a list where each row is in an index.
         """
 
-        # This is still very broken
-
+        board = self.new_position_in_list(old_square, new_square, position)
+        fen = self.board_without_icons_and_dots()
+        empty = 0
         new_fen = ""
-        old_rank_index = "87654321".find(old_square[-1])
-        old_file_index = "abcdefgh".find(old_square[-2])
-        new_rank_index = "87654321".find(new_square[-1])
-        new_file_index = "abcdefgh".find(new_square[-2])
+
+        print(board)
 
         for i in range(8):
-            if i == old_rank_index and old_square[0] in self.pieces:
-                piece_leaving_rank = ""
-                for j in range(8):
-                    if j == old_file_index:
-                        piece_leaving_rank += "1"
-                    else:
-                        piece_leaving_rank += position[i][j]
-                position[i] = piece_leaving_rank
-            if i == new_rank_index and new_square[0] in self.pieces:
-                piece_new_to_rank = ""
-                for j in range(8):
-                    if j == new_file_index:
-                        piece_new_to_rank += new_square[0]
-                    else:
-                        piece_new_to_rank += position[i][j]
-                position[i] = piece_new_to_rank
-            empty = 0
             new_row = ""
             for j in range(8):
-                if position[i][j] == "1":
+                if board[i][j] == "1":
                     empty += 1
-                elif empty == 0:
-                    new_row += position[i][j]
-                elif position[i][j] != "1" and empty != 0:
-                    new_row += str(empty)
-                    new_row += position[i][j]
-                    empty = 0
-            if j == 7 and empty != 0:
+                    continue
+                if empty == 0:
+                    new_row += board[i][j]
+                    continue
+                new_row += str(empty)
+                new_row += board[i][j]
+                empty = 0
+            if empty != 0:
                 new_row += str(empty)
             empty = 0
-            new_fen += new_row+"/"
+            new_fen += new_row
+            if i != 7:
+                new_fen += "/"
+        self.fen = new_fen
 
         return new_fen
 
+
+
 # jee = Board()
-# # print(jee.print_board())
-# # print(jee.board_without_icons_and_dots())
+# print(jee.print_board())
+# print(jee.board_without_icons_and_dots())
 # aa = ['rnbqkbnr', 'pppppppp', '11111111', '11111111', '11111111', '11111111', 'PPPPPPPP', 'RNBQKBNR']
-# # print(jee.board_list_to_dict(aa))
+# print(jee.board_list_to_dict(aa))
 # print(jee.new_fen("Ng1", "Nf3", aa))
