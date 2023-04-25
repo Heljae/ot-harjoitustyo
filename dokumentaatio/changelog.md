@@ -17,4 +17,6 @@
 - Board luokassa pystyy nyt muokkaamaan asemaa, jota pelaajat eivät näe  
 - main tiedosto huomattavasti erilainen  
 - Nappuloiden liikuttaminen erilainen, toistaiseksi mustilla ei voi tehdä siirtoja :')  
-- 
+- Muokattiin luokkia makingmoves, Board ja LegalMoves  
+- Ohjelma toimii jotenkin ja nyt ohjelmalle voi antaa kaksi kuningatarta  
+- Nappuloiden lyöminen ei toimi halutulla tavalla  

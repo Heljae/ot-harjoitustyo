@@ -11,4 +11,5 @@
 | 18.4. | 1.5h | Kaikkien luokkien edistämistä, erityisesti luokan MakingMoves ja Board |
 | 23.4. | 1h | Luokan Board edistämistä |
 | 24.4. | 4h | Board luokkaa, main tiedostoa ja MakingMoves luokan muokkaamista ja edistämistä |
-| yht | 18h |   |
+| 25.4. | 3h | Kaikkien luokkien kehittämistä, erityisesti making moves ja board |
+| yht | 21h |   |
