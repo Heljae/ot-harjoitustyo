@@ -4,3 +4,6 @@ Projektissa on lopulta mahdollista pelata shakin erästä varianttia nimeltä pi
 [vaatimusmaarittely](https://github.com/Heljae/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)  
 [tuntikirjanpito](https://github.com/Heljae/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)  
 [changelog](https://github.com/Heljae/ot-harjoitustyo/blob/master/dokumentaatio/changelog.md)
+
+## Release
+Uusin release löytyy [tästä](https://github.com/Heljae/ot-harjoitustyo/releases/tag/viikko5).
