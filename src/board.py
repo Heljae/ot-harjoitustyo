@@ -82,7 +82,7 @@ class Board:
     #         row += symbol
     #     board += row
     #     return board
-    
+
     def board_without_icons_and_dots(self):
         board = ""
         row = ""

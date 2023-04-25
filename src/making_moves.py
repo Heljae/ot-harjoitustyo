@@ -82,10 +82,8 @@ class MakingMoves:
         if self.turn:
             if old in legal_squares and move[0] == "N":
                 self.turn = False
-                print(board)
                 position = self.board.new_position_in_list(
                     old, move, board)
-                print(position)
                 self.position = self.board.new_fen(
                     old, move, board)
                 return position

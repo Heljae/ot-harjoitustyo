@@ -11,10 +11,10 @@ class AbnormalMoves:
 
         if capture == -1:
             return
-        
+
         if move[0] not in "RNBQK":
             piece = "p"
-        
+
     def checkmate(self, fen):
         pass
 
