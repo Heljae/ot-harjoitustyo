@@ -16,8 +16,7 @@ class LegalMoves:
         file_index = "abcdefgh".find(square[1])
         rank_index = "12345678".find(square[2])
 
-        """
-        The following dictionary represents all of knight's possibe moves.
+        """The following dictionary represents all of knight's possibe moves.
         The key is how many files the knight moves.
         The value is a list of how many ranks the knight can move.
         """
@@ -25,17 +24,17 @@ class LegalMoves:
         possible_moves = {-2: [1, -1], -1: [2, -2], 1: [2, -2], 2: [1, -1]}
         moves = []
         for next_file in possible_moves:
-            for item in possible_moves[next_file]:
+            for movement in possible_moves[next_file]:
                 # We need to calculate if the knight goes over the board.
 
-                if rank_index+1+item > 8 or rank_index+1+item < 0:
+                if rank_index+1+movement > 8 or rank_index+1+movement < 0:
                     continue
                 if file_index+1+int(next_file) > 8 or file_index+1+int(next_file) < 1:
                     continue
-                if rank_index + int(item) < 0:
+                if rank_index + int(movement) < 0:
                     continue
                 possible_file = self.files[file_index+int(next_file)]
-                possible_rank = self.ranks[rank_index+int(item)]
+                possible_rank = self.ranks[rank_index+int(movement)]
                 moves.append(f"{square[0]}{possible_file}{possible_rank}")
         return moves
 

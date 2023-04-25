@@ -6,8 +6,11 @@ class Board:
     Starts from the beginning position.
     """
 
-    def __init__(self):
+    def __init__(self, queen1, queen2):
         self.fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"
+        self.unseen_fen = "rnbqkbnr/pppppppp/11111111/11111111/11111111/11111111/PPPPPPPP/RNBQKBNR"
+        self.queen1 = queen1
+        self.queen2 = queen2
         self.pieces = {"R": "♖", "N": "♘", "B": "♗", "Q": "♕", "K": "♔",
                        "P": "♙", "r": "♜", "n": "♞", "b": "♝", "q": "♛", "k": "♚", "p": "♟"}
 
@@ -16,36 +19,74 @@ class Board:
         row = ""
         for symbol in self.fen:
             if symbol == "/":
-                row += "\n"
-                board += row
+                board += row+"\n"
                 row = ""
                 continue
             if symbol not in ascii_letters:
-                row += int(symbol)*"."
+                row += int(symbol)*". "
                 continue
-            row += self.pieces[symbol]
-            if len(board) == 63 and len(row) == 8:
-                board += row
-                break
+            row += self.pieces[symbol]+" "
+        board += row
         return board
 
+    def board_setup(self):
+        board = self.unseen_fen
+        board = board.split("/")
+        fen = ""
+        file_index1 = "abcdefgh".find(self.queen1[-2])
+        file_index2 = "abcdefgh".find(self.queen2[-2])
+        row = ""
+
+        for i in range(8):
+            if i != 1 and i != 6:
+                fen += board[i]
+                if i != 7:
+                    fen += "/"
+                continue
+            for j in range(8):
+                if i == 1:
+                    if j == file_index2:
+                        row += "q"
+                    else:
+                        row += board[i][j]
+                if i == 6:
+                    if j == file_index1:
+                        row += "Q"
+                    else:
+                        row += board[i][j]
+            fen += row+"/"
+            row = ""
+
+        self.unseen_fen = fen
+
+    def making_unseen_board(self):
+        board = ""
+        row = ""
+        for symbol in self.unseen_fen:
+            if symbol == "/":
+                board += row+"/"
+                row = ""
+                continue
+            if symbol not in ascii_letters:
+                row += "1"
+                continue
+            row += symbol
+        board += row
+        return board
+    
     def board_without_icons_and_dots(self):
         board = ""
         row = ""
         for symbol in self.fen:
             if symbol == "/":
-                row += "\n"
-                board += row
+                board += row+"/"
                 row = ""
                 continue
             if symbol not in ascii_letters:
-                row += int(symbol)*"."
+                row += int(symbol)*"1"
                 continue
             row += symbol
-            if len(board) == 63 and len(row) == 8:
-                board += row
-                break
-        board = board.replace(".", "1")
+        board += row
         return board
 
     def new_position_in_list(self, old_square: str, new_square: str, position: list):
@@ -99,16 +140,15 @@ class Board:
 
     def new_fen(self, old_square: str, new_square: str, position: list):
         """Method creates a new fen where the given piece is moved into the given square.
-        Method gets the previous square of the piece, the new square, and the board as its arguments.
+        Method gets the previous square of the piece, the new square, and the board as arguments.
         The board is a list where each row is in an index.
         """
 
+        # self.unseen_fen = self.board_without_icons_and_dots()
+
         board = self.new_position_in_list(old_square, new_square, position)
-        fen = self.board_without_icons_and_dots()
         empty = 0
         new_fen = ""
-
-        print(board)
 
         for i in range(8):
             new_row = ""
@@ -129,14 +169,16 @@ class Board:
             if i != 7:
                 new_fen += "/"
         self.fen = new_fen
-
         return new_fen
 
 
-
-# jee = Board()
+# jee = Board("e2", "g7")
+# jee.board_setup()
 # print(jee.print_board())
 # print(jee.board_without_icons_and_dots())
+# print(jee.unseen_fen)
 # aa = ['rnbqkbnr', 'pppppppp', '11111111', '11111111', '11111111', '11111111', 'PPPPPPPP', 'RNBQKBNR']
+# aa1 = ['rnbqkbnr', 'pppppppp', '11111111', '11111111', '11111111', '11111N11', 'PPPPPPPP', 'RNBQKB1R']
+# aa = ['rnbq1rk1', 'pppp1ppp', '1111pn11', '11111111', '1bPP1111', '11N1P111', 'PP111PPP', 'R1BQKBNR']
 # print(jee.board_list_to_dict(aa))
 # print(jee.new_fen("Ng1", "Nf3", aa))
