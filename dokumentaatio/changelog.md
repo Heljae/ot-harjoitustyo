@@ -13,4 +13,8 @@
  
 ## Viikko 5
 - Muokattiin luokkaa Board toimivaksi (new_fen toimii)  
+- Board luokassa metodi board_setup, joka asettaa kaksi annettua kuningatarta laudalle siten, että pelaajat eivät kuitenkaan näe niitä  
+- Board luokassa pystyy nyt muokkaamaan asemaa, jota pelaajat eivät näe  
+- main tiedosto huomattavasti erilainen  
+- Nappuloiden liikuttaminen erilainen, toistaiseksi mustilla ei voi tehdä siirtoja :')  
 - 

@@ -10,4 +10,5 @@
 | 17.4. | 1.5h | MakingMoves luokan edistämistä |
 | 18.4. | 1.5h | Kaikkien luokkien edistämistä, erityisesti luokan MakingMoves ja Board |
 | 23.4. | 1h | Luokan Board edistämistä |
-| yht | 14h |   |
+| 24.4. | 4h | Board luokkaa, main tiedostoa ja MakingMoves luokan muokkaamista ja edistämistä |
+| yht | 18h |   |
