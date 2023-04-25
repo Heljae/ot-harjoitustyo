@@ -36,19 +36,6 @@ class MakingMoves:
             return self.__moving_black_pawn(move)
         raise ValueError("Laiton siirto!")
 
-        # if move[0] in moves:
-        #     print(moves[move[0]])
-        #     return moves[move[0]]
-
-        # if move[0] in self.pieces:
-        #     return moves[move[0]]
-        # if move[0] in self.file:
-        #     if self.turn:
-        #         return self.__moving_white_pawn(move)
-        #     if not self.turn:
-        #         return self.__moving_black_pawn(move)
-        # raise ValueError("Laiton siirto!")
-
     def __moving_rook(self, move):
         legal_squares = self.legal.rooks_legal_moves(move)
 
@@ -95,8 +82,10 @@ class MakingMoves:
         if self.turn:
             if old in legal_squares and move[0] == "N":
                 self.turn = False
+                print(board)
                 position = self.board.new_position_in_list(
                     old, move, board)
+                print(position)
                 self.position = self.board.new_fen(
                     old, move, board)
                 return position
@@ -119,6 +108,8 @@ class MakingMoves:
             for j in range(8):
                 if board[i][j] == move[0]:
                     old = "B"+self.file[j]+self.rank[i]
+                    if old in legal_squares:
+                        break
         if self.turn:
             if old in legal_squares and move[0] == "B":
                 self.turn = False
@@ -147,6 +138,8 @@ class MakingMoves:
             for j in range(8):
                 if board[i][j] == move[0]:
                     old = "Q"+self.file[j]+self.rank[i]
+                    if old in legal_squares:
+                        break
         if self.turn:
             if old in legal_squares and move[0] == "Q":
                 self.turn = False
@@ -175,6 +168,8 @@ class MakingMoves:
             for j in range(8):
                 if board[i][j] == move[0]:
                     old = "K"+self.file[j]+self.rank[i]
+                    if old in legal_squares:
+                        break
         if self.turn:
             if old in legal_squares and move[0] == "K":
                 self.turn = False
@@ -198,37 +193,41 @@ class MakingMoves:
         legal_squares = self.legal.white_pawns_legal_moves(move)
 
         board = self.board.board_without_icons_and_dots()
-        board = board.split("\n")
-        rank_index = "87654321".find(move[1])
-        file_index = "abcdefgh".find(move[0])
-        print(rank_index, file_index)
+        board = board.split("/")
+        rank_index = "87654321".find(move[-2])
+        file_index = "abcdefgh".find(move[-1])
+        print(board)
+
         for i in range(8):
             for j in range(8):
-                if i == rank_index and j == file_index:
-                    print(legal_squares)
+                if board[i][j] == "P":
                     old = self.file[j]+self.rank[i]
-        if old in legal_squares:
-            self.turn = False
-            new_fen = self.board.new_fen(old, move, board)
-            return new_fen
-        raise ValueError("Laiton siirto!")
+                    if old in legal_squares:
+                        break
+        self.turn = False
+        print(old, move)
+        new_fen = self.board.new_fen(old, move, board)
+        return new_fen
 
     def __moving_black_pawn(self, move):  # luokka rikki
         legal_squares = self.legal.black_pawns_legal_moves(move)
 
         board = self.board.board_without_icons_and_dots()
-        board = board.split("\n")
+        board = board.split("/")
+        rank_index = "87654321".find(move[-2])
+        file_index = "abcdefgh".find(move[-1])
+
         for i in range(8):
             for j in range(8):
-                if i == move[0] and j == move[1]:
+                if board[i][j] == "p":
                     old = self.file[j]+self.rank[i]
-        if old in legal_squares and move[0] == "p":
-            self.turn = True
-            new_fen = self.board.new_fen(old, move, board)
-            return new_fen
-        raise ValueError("Laiton siirto!")
+                    if old in legal_squares:
+                        break
+        self.turn = True
+        new_fen = self.board.new_fen(old, move, board)
+        return new_fen
 
 
-# jee = MakingMoves(Board("e2", "g7"))
-# print(jee.make_move("Nf3"))
+jee = MakingMoves(Board("e2", "g7"))
+print(jee.make_move("Nf3"))
 # jee.make_move("Ra8")

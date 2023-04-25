@@ -30,6 +30,9 @@ class Board:
         return board
 
     def board_setup(self):
+        """This method sets up the board correctly for a game.
+        """
+
         board = self.unseen_fen
         board = board.split("/")
         fen = ""
@@ -37,6 +40,11 @@ class Board:
         file_index2 = "abcdefgh".find(self.queen2[-2])
         row = ""
 
+        # Next checks if the given queens are valid
+        if self.queen1[1] != "2" or self.queen2[1] != "7":
+            return False
+
+        # Next sets up the nonvisible board
         for i in range(8):
             if i != 1 and i != 6:
                 fen += board[i]
@@ -58,21 +66,22 @@ class Board:
             row = ""
 
         self.unseen_fen = fen
+        return True
 
-    def making_unseen_board(self):
-        board = ""
-        row = ""
-        for symbol in self.unseen_fen:
-            if symbol == "/":
-                board += row+"/"
-                row = ""
-                continue
-            if symbol not in ascii_letters:
-                row += "1"
-                continue
-            row += symbol
-        board += row
-        return board
+    # def making_unseen_board(self):
+    #     board = ""
+    #     row = ""
+    #     for symbol in self.unseen_fen:
+    #         if symbol == "/":
+    #             board += row+"/"
+    #             row = ""
+    #             continue
+    #         if symbol not in ascii_letters:
+    #             row += "1"
+    #             continue
+    #         row += symbol
+    #     board += row
+    #     return board
     
     def board_without_icons_and_dots(self):
         board = ""
@@ -95,9 +104,14 @@ class Board:
         old_file_index = "abcdefgh".find(old_square[-2])
         new_rank_index = "87654321".find(new_square[-1])
         new_file_index = "abcdefgh".find(new_square[-2])
+        piece = new_square[0]
 
-        if old_square[0] not in self.pieces:
-            return "Vääräää"
+        if piece not in self.pieces:
+            if old_rank_index-new_rank_index < 0:
+                piece = "p"
+            else:
+                piece = "P"
+
         new_row = ""
         old_row = board_dict[old_rank_index]
         for i in range(8):
@@ -111,7 +125,7 @@ class Board:
         older_row = board_dict[new_rank_index]
         for i in range(8):
             if new_file_index == i:
-                new_row += old_square[0]
+                new_row += piece
                 continue
             new_row += older_row[i]
         board_dict[new_rank_index] = new_row
@@ -173,7 +187,8 @@ class Board:
 
 
 # jee = Board("e2", "g7")
-# jee.board_setup()
+# print(jee.board_setup())
+# print(jee.unseen_fen)
 # print(jee.print_board())
 # print(jee.board_without_icons_and_dots())
 # print(jee.unseen_fen)
@@ -182,3 +197,4 @@ class Board:
 # aa = ['rnbq1rk1', 'pppp1ppp', '1111pn11', '11111111', '1bPP1111', '11N1P111', 'PP111PPP', 'R1BQKBNR']
 # print(jee.board_list_to_dict(aa))
 # print(jee.new_fen("Ng1", "Nf3", aa))
+# print(jee.board_list_to_dict(aa))

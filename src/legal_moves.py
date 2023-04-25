@@ -127,9 +127,9 @@ class LegalMoves:
         if square[0] not in self.files or square[1] not in self.ranks or len(square) != 2:
             return "Illegal square!"
 
-        possible_moves = [square[0]+str(int(square[1])+1)]
-        if square[1] == "2":
-            possible_moves.append(square[0]+str(int(square[1])+2))
+        possible_moves = [square[0]+str(int(square[1])-1)]
+        if square[1] == "4":
+            possible_moves.append(square[0]+str(int(square[1])-2))
         return possible_moves
 
     def black_pawns_legal_moves(self, square):
@@ -139,7 +139,7 @@ class LegalMoves:
         if square[0] not in self.files or square[1] not in self.ranks or len(square) != 2:
             return "Illegal square!"
 
-        possible_moves = [square[0]+str(int(square[1])-1)]
-        if square[1] == "7":
-            possible_moves.append(square[0]+str(int(square[1])-2))
+        possible_moves = [square[0]+str(int(square[1])+1)]
+        if square[1] == "5":
+            possible_moves.append(square[0]+str(int(square[1])+2))
         return possible_moves

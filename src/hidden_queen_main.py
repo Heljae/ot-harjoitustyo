@@ -1,5 +1,6 @@
 from board import Board
 from making_moves import MakingMoves
+from unnatural_moves import AbnormalMoves
 
 print("Tervetuloa pelaamaan shakin varianttia nimeltä Piilodaami!")
 print()
@@ -14,14 +15,16 @@ print("Valitse yksi sotilaistasi, jonka haluat olevan kunignatar.")
 print("Kirjoita ruutu, jossa sotilas tällä hetkellä on (esim. g2 tai e7)")
 print()
 
-queen1 = input("Pelaaja 1: ")
-queen2 = input("Pelaaja 2: ")
+queen1 = input("Pelaaja 1 (valkeat): ")
+queen2 = input("Pelaaja 2 (mustat): ")
 
 position = Board(queen1, queen2)
-position.board_setup()
+correct_board = position.board_setup()
 real_position = MakingMoves(position)
 
 while True:
+    if not correct_board:
+        print("Laiton ruutu kuningattarelle!")
     print()
     print(position.print_board())
     # print(real_position.board.fen)
