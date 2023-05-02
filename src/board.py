@@ -184,17 +184,3 @@ class Board:
                 new_fen += "/"
         self.fen = new_fen
         return new_fen
-
-
-# jee = Board("e2", "g7")
-# print(jee.board_setup())
-# print(jee.unseen_fen)
-# print(jee.print_board())
-# print(jee.board_without_icons_and_dots())
-# print(jee.unseen_fen)
-# aa = ['rnbqkbnr', 'pppppppp', '11111111', '11111111', '11111111', '11111111', 'PPPPPPPP', 'RNBQKBNR']
-# aa1 = ['rnbqkbnr', 'pppppppp', '11111111', '11111111', '11111111', '11111N11', 'PPPPPPPP', 'RNBQKB1R']
-# aa = ['rnbq1rk1', 'pppp1ppp', '1111pn11', '11111111', '1bPP1111', '11N1P111', 'PP111PPP', 'R1BQKBNR']
-# print(jee.board_list_to_dict(aa))
-# print(jee.new_fen("Ng1", "Nf3", aa))
-# print(jee.board_list_to_dict(aa))

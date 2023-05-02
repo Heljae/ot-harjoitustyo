@@ -20,3 +20,7 @@
 - Muokattiin luokkia makingmoves, Board ja LegalMoves  
 - Ohjelma toimii jotenkin ja nyt ohjelmalle voi antaa kaksi kuningatarta  
 - Nappuloiden lyöminen ei toimi halutulla tavalla  
+
+## Viikko 6
+- Lisättiin tarkemmat ohjeet shakkinotaatiolle.  
+- Pelejä pystyy nyt lisäämään tietokantaan  

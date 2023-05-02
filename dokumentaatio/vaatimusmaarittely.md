@@ -6,7 +6,7 @@ Sovelluksessa tulee olemaan seuraavat toiminnallisuudet:
 - Aluksi lauta printataan tekstikäyttöliittymänä (tehty)  
 - Tekstikäyttöliittymässä kirjoitat tehtävän siirron ja siirto tapahtuu (tehty)  
 - Uuden pelin aloitus  
-- Voit tallentaa pelejä tietokantaan  
+- Voit tallentaa pelejä tietokantaan (tehty)  
 - Voit siirrellä nappuloita graafisen käyttöliittymän avulla
 ## Jatkokehitysideat
 - premove  

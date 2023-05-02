@@ -1,0 +1,31 @@
+Siirtojen tekeminen
+
+Shakkinotaatiossa kirjoitetaan ensin liikutettava nappula, sitten
+nappulan linja (vaaka-akselin kirjain) ja lopuski nappulan rivi
+(pystyrivin numero). Esimerkiksi Nf3 tarkoittaa, että ratsu (N) siirretään
+f-linjalle ja kolmannelle riville. Sotilaan tapauksessa nappulaa ei
+merkitä. Koordinaatit:
+
+8 . . . . . . . .
+7 . . . . . . . .
+6 . . . . . . . .
+5 . . . . . . . .
+4 . . . . . . . .
+3 . . . . . . . .
+2 . . . . . . . .
+1 . . . . . . . .
+  a b c d e f g h
+
+Nappulat:
+R - torni (rook)
+N - ratsu (knight)
+B - lähetti (bishop)
+Q - kuningatar (queen)
+K - kuningas (king)
+
+Shakin säännöt löydät seuraavasta osoitteesta:
+https://www.chess.com/learn-how-to-play-chess
+
+Tässä variaatiossa valitset yhden sotilaistasi, joka saakin liikkua
+kuningattaren tavoin, mutta nappula tulee edelleen näyttämään sotilaalta.
+Onnea peliin!

@@ -45,6 +45,10 @@ class MakingMoves:
             for j in range(8):
                 if board[i][j] == move[0]:
                     old = "R"+self.file[j]+self.rank[i]
+        if old not in legal_squares:
+            print("Laiton siirto, anna uusi siirto!")
+            return
+
         if self.turn:
             if old in legal_squares and move[0] == "R":
                 self.turn = False
@@ -62,7 +66,6 @@ class MakingMoves:
                 self.board.fen = self.board.new_fen(
                     old, move, board)
                 return position
-        raise ValueError("Laiton siirto!")
 
     def __moving_knight(self, move):
         legal_squares = self.legal.knights_legal_moves(move)
@@ -79,6 +82,10 @@ class MakingMoves:
                     old = "N"+self.file[j]+self.rank[i]
                     if old in legal_squares:
                         break
+        if old not in legal_squares:
+            print("Laiton siirto, anna uusi siirto!")
+            return
+
         if self.turn:
             if old in legal_squares and move[0] == "N":
                 self.turn = False
@@ -95,7 +102,6 @@ class MakingMoves:
                 self.position = self.board.new_fen(
                     old, move, board)
                 return position
-        raise ValueError("Laiton siirto!")
 
     def __moving_bishop(self, move):
         legal_squares = self.legal.bishops_legal_moves(move)
@@ -108,6 +114,10 @@ class MakingMoves:
                     old = "B"+self.file[j]+self.rank[i]
                     if old in legal_squares:
                         break
+        if old not in legal_squares:
+            print("Laiton siirto, anna uusi siirto!")
+            return
+
         if self.turn:
             if old in legal_squares and move[0] == "B":
                 self.turn = False
@@ -125,7 +135,6 @@ class MakingMoves:
                 self.position = self.board.new_fen(
                     old, move, board)
                 return position
-        raise ValueError("Laiton siirto!")
 
     def __moving_queen(self, move):
         legal_squares = self.legal.queens_legal_moves(move)
@@ -138,6 +147,10 @@ class MakingMoves:
                     old = "Q"+self.file[j]+self.rank[i]
                     if old in legal_squares:
                         break
+        if old not in legal_squares:
+            print("Laiton siirto, anna uusi siirto!")
+            return
+
         if self.turn:
             if old in legal_squares and move[0] == "Q":
                 self.turn = False
@@ -155,7 +168,6 @@ class MakingMoves:
                 self.position = self.board.new_fen(
                     old, move, board)
                 return position
-        raise ValueError("Laiton siirto!")
 
     def __moving_king(self, move):
         legal_squares = self.legal.kings_legal_moves(move)
@@ -168,6 +180,9 @@ class MakingMoves:
                     old = "K"+self.file[j]+self.rank[i]
                     if old in legal_squares:
                         break
+        if old not in legal_squares:
+            print("Laiton siirto, anna uusi siirto!")
+            return
         if self.turn:
             if old in legal_squares and move[0] == "K":
                 self.turn = False
@@ -185,47 +200,43 @@ class MakingMoves:
                 self.position = self.board.new_fen(
                     old, move, board)
                 return position
-        raise ValueError("Laiton siirto!")
 
-    def __moving_white_pawn(self, move):  # luokka edelleen rikki
+    def __moving_white_pawn(self, move):
         legal_squares = self.legal.white_pawns_legal_moves(move)
 
         board = self.board.board_without_icons_and_dots()
         board = board.split("/")
-        rank_index = "87654321".find(move[-2])
-        file_index = "abcdefgh".find(move[-1])
-        print(board)
+        rank_index = "87654321".find(move[-1])
+        file_index = "abcdefgh".find(move[-2])
 
-        for i in range(8):
-            for j in range(8):
-                if board[i][j] == "P":
-                    old = self.file[j]+self.rank[i]
-                    if old in legal_squares:
-                        break
+        if board[rank_index+1][file_index] == "P":
+            old = self.file[file_index]+self.rank[rank_index+1]
+        else:
+            old = self.file[file_index]+self.rank[rank_index+2]
+
+        if old not in legal_squares:
+            print("Laiton siirto, anna uusi siirto!")
+            return
         self.turn = False
-        print(old, move)
         new_fen = self.board.new_fen(old, move, board)
         return new_fen
 
-    def __moving_black_pawn(self, move):  # luokka rikki
+    def __moving_black_pawn(self, move):  # rikki
         legal_squares = self.legal.black_pawns_legal_moves(move)
 
         board = self.board.board_without_icons_and_dots()
         board = board.split("/")
-        rank_index = "87654321".find(move[-2])
-        file_index = "abcdefgh".find(move[-1])
+        rank_index = "87654321".find(move[-1])
+        file_index = "abcdefgh".find(move[-2])
 
-        for i in range(8):
-            for j in range(8):
-                if board[i][j] == "p":
-                    old = self.file[j]+self.rank[i]
-                    if old in legal_squares:
-                        break
+        if board[rank_index-1][file_index] == "p":
+            old = self.file[file_index]+self.rank[rank_index-1]
+        else:
+            old = self.file[file_index]+self.rank[rank_index-2]
+
+        if old not in legal_squares:
+            print("Laiton siirto, anna uusi siirto!")
+            return
         self.turn = True
         new_fen = self.board.new_fen(old, move, board)
         return new_fen
-
-
-jee = MakingMoves(Board("e2", "g7"))
-print(jee.make_move("Nf3"))
-# jee.make_move("Ra8")
