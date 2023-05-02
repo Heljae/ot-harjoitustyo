@@ -42,5 +42,8 @@ poetry run invoke lint
 ```
 
 ## Release
-Uusin release löytyy [tästä](https://github.com/Heljae/ot-harjoitustyo/releases/tag/viikko5).
+Uusin release löytyy [tästä](https://github.com/Heljae/ot-harjoitustyo/releases/tag/viikko5).  
+  
+Viikon 5 [release](https://github.com/Heljae/ot-harjoitustyo/releases/tag/viikko5)  
+Viikon 6 [release](https://github.com/Heljae/ot-harjoitustyo/releases/tag/viikko6)
 
