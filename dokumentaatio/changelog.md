@@ -24,3 +24,5 @@
 ## Viikko 6
 - Lisättiin tarkemmat ohjeet shakkinotaatiolle.  
 - Pelejä pystyy nyt lisäämään tietokantaan  
+- Main muokattu. Nyt on lisää ohjeita ja siirrot toimivat paremmin  
+- Lisää testejä
