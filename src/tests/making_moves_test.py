@@ -1,6 +1,6 @@
 import unittest
-from board import Board
-from making_moves import MakingMoves
+from logiikka.board import Board
+from logiikka.making_moves import MakingMoves
 
 
 class TestBoard(unittest.TestCase):

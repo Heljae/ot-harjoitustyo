@@ -1,5 +1,5 @@
-from legal_moves import LegalMoves
-from board import Board
+from logiikka.legal_moves import LegalMoves
+from logiikka.board import Board
 
 
 class MakingMoves:
@@ -20,16 +20,28 @@ class MakingMoves:
         """This method makes the move and changes the position in attribute into FEN format.
         """
 
-        if move[0] == "R":
-            return self.__moving_rook(move)
-        if move[0] == "N":
-            return self.__moving_knight(move)
-        if move[0] == "B":
-            return self.__moving_bishop(move)
-        if move[0] == "Q":
-            return self.__moving_queen(move)
-        if move[0] == "K":
-            return self.__moving_king(move)
+#         >>> command = 'Hello, World!'
+# >>> match command:
+# ...     case 'Hello, World!':
+# ...         print('Hello to you too!')
+# ...     case 'Goodbye, World!':
+# ...         print('See you later')
+# ...     case other:
+# ...         print('No match found')
+ 
+# Hello to you too!
+
+        match move[0]:
+            case "R":
+                return self.__moving_rook(move)
+            case "N":
+                return self.__moving_knight(move)
+            case "B":
+                return self.__moving_bishop(move)
+            case "Q":
+                return self.__moving_queen(move)
+            case "K":
+                return self.__moving_king(move)
         if self.turn:
             return self.__moving_white_pawn(move)
         if not self.turn:

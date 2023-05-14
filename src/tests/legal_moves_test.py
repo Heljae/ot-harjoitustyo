@@ -1,5 +1,5 @@
 import unittest
-from legal_moves import LegalMoves
+from logiikka.legal_moves import LegalMoves
 
 
 class TestLegalMoves(unittest.TestCase):

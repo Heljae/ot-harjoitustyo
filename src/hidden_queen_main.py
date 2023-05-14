@@ -1,7 +1,7 @@
-from board import Board
-from making_moves import MakingMoves
-from unnatural_moves import AbnormalMoves
-from database import *
+from logiikka.board import Board
+from logiikka.making_moves import MakingMoves
+from logiikka.unnatural_moves import AbnormalMoves
+from logiikka.database import *
 import os
 
 print("Tervetuloa pelaamaan shakin varianttia nimeltä Piilodaami!")
@@ -85,7 +85,9 @@ while True:
         main()
     if command == "2":
         print_games()
-    else:
+    if command == "4":
+        search()
+    if command == "3":
         break
 
 print("Kiitos pelaamisesta!")
